@@ -1,10 +1,15 @@
 const express = require("express");
 const path = require("path");
 
-const port = process.env.PORT || 8080;
+const app = express();
 
-express()
-  .use(express.static(path.join(__dirname, "public")))
-  .listen(port, () => {
-    console.log(`Server listening on port ${port}`);
-  });
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get("/", (req, res) => {
+  res.render('./public/index.html');
+});
+
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
