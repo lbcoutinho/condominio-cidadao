@@ -10,7 +10,7 @@ body {
 main {
   max-width: 800px;
   margin: auto;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
   min-height: 100vh;
   text-align: center;
   background: #efefef;
@@ -19,7 +19,6 @@ main {
 }
 
 .text {
-  width: 70vw;
   margin: auto;
   font-size: 1.3rem;
   margin-top: 1.5rem;
@@ -69,25 +68,3 @@ main {
 .btn + .btn {
   margin-left: 1rem;
 }
-
-/*
-@media (min-width: 500px) {
-  #landing {
-    display: flex;
-    height: 100%;
-  }
-
-  #landing-text {
-    height: 100vh;
-  }
-
-  #landing-image {
-    height: 100vh;
-  }
-}
-
-@media (min-width: 700px) {
-  .btn {
-    padding: 1rem 3rem;
-  }
-} */
