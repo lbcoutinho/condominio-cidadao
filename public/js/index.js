@@ -1,28 +1,36 @@
 $(() => {
-  $("#startTest").click(function() {
-    localStorage.correct = 0;
-  });
-
-  function validateAndSaveOption(btnId, inputName, correctOption) {
+  function validateAndSaveOption(btnId, inputName) {
     $(`#${btnId}`).click(e => {
       const selected = $(`input[name=${inputName}]:checked`).val();
       if (!selected) {
         e.preventDefault();
         alert("Por favor, selecione uma opção.");
-      } else if (selected == correctOption) {
-        localStorage.correct = parseInt(localStorage.correct) + 1;
+      } else {
+        localStorage.setItem(inputName, selected);
       }
     });
   }
 
-  validateAndSaveOption("btn1", "question1", "1a");
-  validateAndSaveOption("btn2", "question2", "2b");
-  validateAndSaveOption("btn3", "question3", "3d");
+  validateAndSaveOption("btn1", "question1"); // 1a
+  validateAndSaveOption("btn2", "question2"); // 2b
+  validateAndSaveOption("btn3", "question3"); // 3d
 
   const result = $("#result");
 
   if (result.length) {
-    const correct = parseInt(localStorage.correct);
+    // Validate answers
+    let correct = 0;
+    if (localStorage.getItem('question1') == '1a') {
+      correct++;
+    }
+    if (localStorage.getItem('question2') == '2b') {
+      correct++;
+    }
+    if (localStorage.getItem('question3') == '3d') {
+      correct++;
+    }
+
+    // Define result message
     if (correct == 0) {
       result.html(
         "Infelizmente você não acertou nenhuma resposta. Sugerimos que leia novamente com atenção os valores e princípios do Manifesto e tente novamente."
